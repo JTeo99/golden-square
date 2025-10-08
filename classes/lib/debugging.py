@@ -25,7 +25,9 @@ def decode(encrypted, key):
 
     return "".join(plaintext_chars)
 
-
+# Changed alphabet variable: from alphabet = [chr(i + 98) for i in range(1, 26)]
+# Error occurs because the item is starting at 98 due to the above which signifies 'b'
+# changes the range to 0,26 to match the alphabet and starts at 97 to ensure that 'a' is included
 def make_cipher(key):
     alphabet = [chr(i + 97) for i in range(0, 26)]
     cipher_with_duplicates = list(key) + alphabet
