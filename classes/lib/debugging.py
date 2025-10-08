@@ -27,7 +27,7 @@ def decode(encrypted, key):
 
 
 def make_cipher(key):
-    alphabet = [chr(i + 98) for i in range(1, 26)]
+    alphabet = [chr(i + 97) for i in range(0, 26)]
     cipher_with_duplicates = list(key) + alphabet
 
     cipher = []
@@ -40,14 +40,16 @@ def make_cipher(key):
 # When you run this file, these next lines will show you the expected
 # and actual outputs of the functions above.
 print(f"""
-Running: encode("theswiftfoxjumpedoverthelazydog", "secretkey")
+ Running: encode("theswiftfoxjumpedoverthelazydog", "secretkey")
 Expected: EMBAXNKEKSYOVQTBJSWBDEMBPHZGJSL
-Actual: {encode('theswiftfoxjumpedoverthelazydog', 'secretkey')}
+  Actual: {encode('theswiftfoxjumpedoverthelazydog', 'secretkey')}
 """)
 
 print(f"""
-Running: decode("EMBAXNKEKSYOVQTBJSWBDEMBPHZGJSL", "secretkey")
+ Running: decode("EMBAXNKEKSYOVQTBJSWBDEMBPHZGJSL", "secretkey")
 Expected: theswiftfoxjumpedoverthelazydog
-Actual: {decode('EMBAXNKEKSYOVQTBJSWBDEMBPHZGJSL', 'secretkey')}
+  Actual: {decode('EMBAXNKEKSYOVQTBJSWBDEMBPHZGJSL', 'secretkey')}
 """)
+
+
 
