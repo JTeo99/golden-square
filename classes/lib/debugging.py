@@ -20,14 +20,12 @@ def decode(encrypted, key):
 
     plaintext_chars = []
     for i in encrypted:
-        plain_char = cipher[65 - ord(i)]
+        plain_char = cipher[ord(i) - 65]
         plaintext_chars.append(plain_char)
 
     return "".join(plaintext_chars)
 
-# Changed alphabet variable: from alphabet = [chr(i + 98) for i in range(1, 26)]
-# Error occurs because the item is starting at 98 due to the above which signifies 'b'
-# changes the range to 0,26 to match the alphabet and starts at 97 to ensure that 'a' is included
+
 def make_cipher(key):
     alphabet = [chr(i + 97) for i in range(0, 26)]
     cipher_with_duplicates = list(key) + alphabet
@@ -53,5 +51,23 @@ Expected: theswiftfoxjumpedoverthelazydog
   Actual: {decode('EMBAXNKEKSYOVQTBJSWBDEMBPHZGJSL', 'secretkey')}
 """)
 
+
+
+# 3
+
+def get_most_common_letter(text):
+    counter = {}
+    for char in text:
+        counter[char] = counter.get(char, 0) + 1
+    counter.pop(" ")
+    letter = sorted(counter.items(), key=lambda item: item[1], reverse = True)[0][0]
+    return letter
+
+
+print(f"""
+Running:  get_most_common_letter("the roof, the roof, the roof is on fire!"))
+Expected: o
+Actual:   {get_most_common_letter("the roof, the roof, the roof is on fire!")}
+""")
 
 
