@@ -1,5 +1,7 @@
 class DiaryEntry:
     def __init__(self, title, contents):
+        if title == "" or contents == "":
+            raise Exception("Diary entries must have a title or contents")
         self._title = title
         self._contents = contents
 
@@ -7,9 +9,9 @@ class DiaryEntry:
         return f"{self._title}: {self._contents}"
 
     def count_words(self):
-        # Returns:
-        #   int: the number of words in the diary entry
-        pass
+        words = self.format().split()
+        return len(words)
+
 
     def reading_time(self, wpm):
         # Parameters:
